@@ -1,0 +1,13 @@
+{
+    "name": "thomasnordahldk/php-cli",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Nordahl Pedersen",
+            "email": "thno@fynskemedier.dk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
