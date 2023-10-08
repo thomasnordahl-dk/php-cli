@@ -2,7 +2,7 @@
 
 namespace PhpCli;
 
-class Test implements Command, UsesArguments
+class Test implements Command
 {
     public static function getName(): string
     {
@@ -23,10 +23,5 @@ class Test implements Command, UsesArguments
         }
 
         return 0;
-    }
-
-    public function injectArguments(Arguments $arguments): void
-    {
-        // TODO: Implement injectArguments() method.
     }
 }

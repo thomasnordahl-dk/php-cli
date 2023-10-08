@@ -28,19 +28,17 @@ class Console
 
     public function run(): int
     {
-        /** @var string[] $argv */
-        $arguments = new Arguments($this->argv);
-        $input = new Input();
+        $input = new Input($this->argv);
         $output = new Output();
 
-        if (! $arguments->getByIndex(1)) {
+        $command_name = $input->getArgument(1);
+
+        if (! $command_name) {
             $output->line("Command not given!");
             $this->showHelpText($output);
 
             return 1;
         }
-
-        $command_name = $arguments->getByIndex(1);
 
         if (! isset($this->commands[$command_name])) {
             $output->line("Unknown command: \"{$command_name}\"");
@@ -50,10 +48,6 @@ class Console
         }
 
         $command = $this->container->get($this->commands[$command_name]);
-
-        if ($command instanceof UsesArguments) {
-            $command->injectArguments($arguments);
-        }
 
         if (! $command instanceof Command) {
             throw new \RuntimeException($command::class . " is not an instance of " . Command::class);
