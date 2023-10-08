@@ -10,11 +10,15 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "psr/container": "2.0.x-dev"
     },
     "autoload": {
         "psr-4": {
             "PhpCli\\": "src/"
         }
+    },
+    "require-dev": {
+        "mindplay/unbox": "dev-master"
     }
 }

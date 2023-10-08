@@ -1,20 +1,16 @@
 <?php
 
-use PhpCli\Arguments;
-use PhpCli\Input;
+use mindplay\unbox\ContainerFactory;
+use PhpCli\Console;
+use PhpCli\Test;
 
 require_once(__DIR__ . "/vendor/autoload.php");
+$factory = new ContainerFactory();
+$factory->register(Test::class);
 
-$input = new Input();
-$arguments = new Arguments($argv);
+$console = new Console($argv, $factory->createContainer());
+$console->register(Test::class);
+exit($console->run());
 
-if ($arguments->getByName('holla')) {
-    echo "HOLLA HOLLA HOLLA!\n";
-}
 
-if ($input->confirm('May I ask you something?')) {
-    $answer = $input->prompt('What is your favorite food?');
-
-    echo "{$answer} is fifty percent off today!\n";
-}
 

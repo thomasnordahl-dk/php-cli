@@ -48,7 +48,7 @@ class Arguments
 
     public function getByIndex(int $index): ?string
     {
-        return $this->ordered_arguments[$index];
+        return $this->ordered_arguments[$index] ?? null;
     }
 
     public function list(): array
